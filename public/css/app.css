@@ -1,0 +1,186 @@
+@import url('./normalize.css');
+@import url('./initialization.css');
+
+.page {
+    background-color: var(--primary);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    color: var(--text);
+}
+
+/* Header styles */
+
+.header {
+    padding: 1rem;
+    background-color: var(--terciary);
+    display: flex;
+    justify-content: center;
+}
+
+.header__title {
+    font-size: 2.2rem;
+}
+
+/* Main styles */
+
+.main {
+    width: 100%;
+    padding: 2rem 0.5rem;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 2rem;
+}
+
+/*--Game styles--*/
+
+.game {
+    max-width: var(--max-width);
+    width: 100%;
+    margin-inline: auto;
+    padding: 1rem;
+    border: 1px solid var(--secondary);
+    border-radius: 10px;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 2rem;
+}
+
+.game__title {
+    font-size: 1.2rem;
+    font-weight: normal;
+    text-align: center;
+}
+
+.game__cards {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+}
+
+.game__card {
+    aspect-ratio: 1;
+    width: 100%;
+    border-radius: 10px;
+    background-color: var(--secondary);
+    cursor: pointer;
+}
+
+.game__card:hover {
+    opacity: 0.8;
+}
+
+.game__button {
+    width: fit-content;
+    margin-inline: auto;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--secondary);
+    border-radius: 5px;
+    background-color: transparent;
+    color: var(--text);
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.game__button:hover {
+    opacity: 0.7;
+}
+
+.game__settings {
+    padding: 0.5rem;
+    border-radius: 5px;
+    background-color: var(--secondary);
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 0.75rem;
+}
+
+.game__text {
+    font-size: 1rem;
+    text-align: center;
+}
+
+.game__options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.game__option {
+    padding: 0.5rem 0.75rem;
+    border-style: none;
+    border-radius: 5px;
+    background-color: var(--primary);
+    color: var(--text);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.game__option:hover {
+    opacity: 0.8;
+}
+
+/*--Rate styles--*/
+
+.rate {
+    max-width: var(--max-width);
+    width: 100%;
+    margin-inline: auto;
+    text-align: center;
+}
+
+.rate__title {
+    font-size: 1.2rem;
+}
+
+
+/* Footer styles */
+
+.footer {
+    padding: 1rem 0.2rem;
+    background-color: var(--terciary);
+}
+
+.footer__text {
+    text-align: center;
+}
+
+.footer__author {
+    font-weight: bold;
+    font-style: italic;
+}
+
+/* Breakpoints */
+
+@media (width > 24rem) {
+    .header__title {
+        font-size: 3rem;
+    }
+
+    .main {
+        padding: 3rem 1rem;
+        gap: 3.5rem;
+    }
+
+    .game__title, .rate__title {
+        font-size: 1.5rem;
+    }
+
+    .game__cards {
+        gap: 1rem;
+    }
+
+    .game__button {
+        font-size: 1.1rem;
+    }
+
+    .game__text {
+        font-size: 1.25rem;
+    }
+
+    .game__option {
+        font-size: 1rem;
+    }
+}

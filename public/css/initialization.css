@@ -1,0 +1,40 @@
+@font-face {
+    font-family: 'Outfit';
+    src: url('../font/Outfit-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Outfit';
+    src: url('../font/Outfit-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+}
+
+:root {
+    --primary: #0A3700;
+    --secondary: #357911;
+    --terciary: #072600;
+    --text: #A4E986;
+    --max-width: 32rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Outfit';
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+}
+
+p {
+    text-wrap: pretty;
+}
