@@ -54,15 +54,20 @@
 .game__cards {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
     gap: 0.5rem;
 }
 
 .game__card {
     aspect-ratio: 1;
+    max-width: 8rem;
     width: 100%;
+    margin: auto;
     border-radius: 10px;
     background-color: var(--secondary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: min(2rem, 10vw);
     cursor: pointer;
 }
 
@@ -141,6 +146,9 @@
 .footer {
     padding: 1rem 0.2rem;
     background-color: var(--terciary);
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1rem;
 }
 
 .footer__text {
@@ -150,6 +158,10 @@
 .footer__author {
     font-weight: bold;
     font-style: italic;
+}
+
+.footer__anchor {
+    color: var(--secondary);
 }
 
 /* Breakpoints */
