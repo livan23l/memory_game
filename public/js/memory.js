@@ -8,6 +8,8 @@ class Memory {
     #modes;
     #emojis;
     #game;
+    #flipDuration;
+    #flipSound;
 
     /**
      * Reposition the current cards in the game cards
@@ -194,7 +196,13 @@ class Memory {
             const currentEmoji = this.#game[idx];
 
             // Shows the current emoji
-            target.innerText = currentEmoji;
+            target.style.transform = 'rotateY(90deg)';
+            this.#flipSound.currentTime = 0;
+            this.#flipSound.play();
+            setTimeout(() => {
+                target.innerText = currentEmoji;
+                target.style.transform = 'rotateY(0deg)';
+            }, this.#flipDuration);
 
             // Flip and hide the cards
             switch (this.#flippedCards.length) {
@@ -213,6 +221,14 @@ class Memory {
 
                         // Clear the flipped cards
                         this.#flippedCards.length = 0;
+
+                        // Add the 'game__card--complete' class to the cards after
+                        // 200 ms
+                        setTimeout(() => {
+                            const lastCard = this.#$cards[lastIdx];
+                            target.classList.add('game__card--complete');
+                            lastCard.classList.add('game__card--complete');
+                        }, 300);
                     } else {
                         // Add the current index to the flipped cards
                         this.#flippedCards.push(idx);
@@ -221,8 +237,15 @@ class Memory {
                 default:
                     // Hides the flipped cards
                     this.#flippedCards.forEach((cardIdx) => {
+                        // Get the current card
                         const card = this.#$cards[cardIdx];
-                        card.innerText = '';
+
+                        // Remove the content with an animation
+                        card.style.transform = 'rotateY(90deg)';
+                        setTimeout(() => {
+                            card.innerText = '';
+                            card.style.transform = 'rotateY(0deg)';
+                        }, this.#flipDuration);
                     });
 
                     // Clear the flipped cards list
@@ -246,6 +269,8 @@ class Memory {
         this.#completeCards = [];
         this.#flippedCards = [];
         this.#currentMode = '4×4';
+        this.#flipDuration = 130;
+        this.#flipSound = new Audio('./public/sound/flip.wav');
         this.#modes = {
             '4×4': { rows: 4, columns: 4 },  // 16 cards
             '5×4': { rows: 5, columns: 4 },  // 20 cards

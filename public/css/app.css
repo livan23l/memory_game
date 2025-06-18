@@ -64,15 +64,31 @@
     margin: auto;
     border-radius: 10px;
     background-color: var(--secondary);
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: min(2rem, 10vw);
     cursor: pointer;
+    transition: transform 130ms;
 }
 
 .game__card:hover {
     opacity: 0.8;
+}
+
+.game__card--complete::after {
+    content: "";
+    border-radius: 10px;
+    background-color: white;
+    opacity: 0.2;
+    position: absolute;
+    inset: 0;
+    cursor: default;
+}
+
+.game__card--complete:hover {
+    opacity: 1;
 }
 
 .game__button {
