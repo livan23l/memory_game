@@ -64,15 +64,32 @@
     margin: auto;
     border-radius: 10px;
     background-color: var(--secondary);
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: min(2rem, 10vw);
     cursor: pointer;
+    user-select: none;
+    transition: transform 130ms;
 }
 
 .game__card:hover {
     opacity: 0.8;
+}
+
+.game__card--complete::after {
+    content: "";
+    border-radius: 10px;
+    background-color: white;
+    opacity: 0.2;
+    position: absolute;
+    inset: 0;
+    cursor: default;
+}
+
+.game__card--complete:hover {
+    opacity: 1;
 }
 
 .game__button {
@@ -81,7 +98,7 @@
     padding: 0.5rem 1rem;
     border: 1px solid var(--secondary);
     border-radius: 5px;
-    background-color: transparent;
+    background-color: var(--primary);
     color: var(--text);
     cursor: pointer;
     transition: opacity 0.2s;
@@ -92,12 +109,22 @@
 }
 
 .game__settings {
-    padding: 0.5rem;
+    max-height: 0;
+    padding: 0;
     border-radius: 5px;
     background-color: var(--secondary);
     display: flex;
     flex-flow: column nowrap;
     gap: 0.75rem;
+    visibility: hidden;
+    overflow: hidden;
+    transition: all 0.5s;
+}
+
+.game__settings--open {
+    max-height: 20rem;
+    padding: 0.5rem;
+    visibility: visible;
 }
 
 .game__text {
@@ -126,6 +153,109 @@
 .game__option:hover {
     opacity: 0.8;
 }
+
+.game__hardcore {
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.hardcore__checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 4rem;
+    height: 2rem;
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: var(--primary);
+    position: relative;
+    cursor: pointer;
+}
+
+.hardcore__checkbox::after {
+    content: "";
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background-color: var(--secondary);
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    translate: -50% -50%;
+    transition: left 0.2s;
+}
+
+.hardcore__checkbox:checked::after {
+    left: 75%;
+}
+
+.hardcore__label {
+    cursor: pointer;
+    user-select: none;
+}
+
+/*--Modal styles--*/
+
+.modal[open] {
+    top: -25%;
+    opacity: 1;
+
+    @starting-style {
+        top: -60%;
+        opacity: 0;
+    }
+}
+
+.modal[open]::backdrop {
+    background-color: #FFFFFF80;
+    cursor: alias;
+
+    @starting-style {
+        background-color: transparent;
+    }
+}
+
+.modal {
+    width: fit-content;
+    padding: 0;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: var(--terciary);
+    position: fixed;
+    top: -60%;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, top 0.3s ease-in-out, display 0.3s allow-discrete;
+}
+
+.modal::backdrop {
+    background-color: transparent;
+    transition: background-color 0.3s linear;
+}
+
+.modal__content {
+    width: 100%;
+    height: 100%;
+    padding: 1.5rem;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    gap: 2rem;
+}
+
+.modal__title {
+    font-size: 1.2rem;
+    color: var(--text);
+    text-align: center;
+}
+
+.modal__text {
+    font-size: 1rem;
+    color: var(--text);
+    text-align: center;
+}
+
 
 /*--Rate styles--*/
 
@@ -194,5 +324,9 @@
 
     .game__option {
         font-size: 1rem;
+    }
+
+    .modal__title {
+        font-size: 2rem;
     }
 }
