@@ -464,7 +464,7 @@ class Memory {
      */
     #setDeviceEvents() {
         window.addEventListener('resize', () => {
-            this.#setGame(this.#repositionCards.bind(this))
+            this.#setGame(this.#repositionCards.bind(this));
         });
     }
 
