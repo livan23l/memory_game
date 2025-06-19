@@ -16,7 +16,7 @@
 <body class="page">
   <!-- Templates -->
   <template id="template-game-card">
-    <div class="game__card"></div>
+    <div class="game__card">★</div>
   </template>
 
   <header class="header">
@@ -26,14 +26,14 @@
   <main class="main">
     <!-- Principal section -->
     <section class="game">
-      <h2 class="game__title">Has click en una carta para empezar a jugar</h2>
+      <h2 class="game__title">Encuentra todos los pares para ganar</h2>
 
       <div id="game-cards" class="game__cards">
       </div>
 
-      <button id="game-button" class="game__button">Ajustes del juego</button>
+      <button id="game-settings-btn" class="game__button">Ajustes del juego</button>
 
-      <div class="game__settings">
+      <div id="game-settings" class="game__settings">
         <p class="game__text">Ajusta la dificultad</p>
         <div id="game__options" class="game__options">
           <button class="game__option">4×4</button>
@@ -43,7 +43,19 @@
           <button class="game__option">8×4</button>
           <button class="game__option">9×4</button>
         </div>
+        <div class="game__hardcore">
+          <input id="hardcore-mode" class="hardcore__checkbox" type="checkbox">
+          <label for="hardcore-mode" class="hardcore__label">Modo de una vida</label>
+        </div>
       </div>
+
+      <dialog id="modal" class="modal">
+        <div class="modal__content">
+          <h3 class="modal__title"></h3>
+          <p class="modal__text"></p>
+          <button class="game__button">Volver a jugar</button>
+        </div>
+      </dialog>
     </section>
 
     <!-- Section to rate the game -->
@@ -67,9 +79,9 @@
     <p class="footer__text">
       Efecto de sonido por
       <span class="footer__author">f4ngy</span>
-      (<a class="footer__anchor" href="https://freesound.org/people/f4ngy/sounds/240776/" target="_blank">Enlace de descarga</a>)
       licenciado bajo
       <a class="footer__anchor" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>.
+      <a class="footer__anchor" href="https://freesound.org/people/f4ngy/sounds/240776/" target="_blank">Enlace de descarga</a>
     </p>
   </footer>
 </body>
