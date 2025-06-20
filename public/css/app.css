@@ -257,19 +257,77 @@
 }
 
 
-/*--Rate styles--*/
+/*--Reviews styles--*/
 
-.rate {
+.reviews {
     max-width: var(--max-width);
     width: 100%;
     margin-inline: auto;
     text-align: center;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 0.5rem;
 }
 
-.rate__title {
-    font-size: 1.2rem;
+.reviews__title {
+    font-size: 1.3rem;
 }
 
+.reviews__stars {
+    width: fit-content;
+    margin: 0.75rem auto 0;
+    padding: 0.5rem 0.75rem;
+    border-radius: 10px;
+    box-shadow: 5px 5px 0 #00000080;
+    background-color: var(--terciary);
+    display: flex;
+    flex-flow: row-reverse wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    user-select: none;
+}
+
+.reviews__current {
+    font-size: 1.1rem;
+}
+
+.reviews__value {
+    font-weight: bold;
+}
+
+.reviews__input {
+    display: none;
+}
+
+.reviews__star {
+    color: var(--text);
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.reviews__star:hover,
+.reviews__star:hover ~ .reviews__star {
+    color: #d8b73d;
+}
+
+.reviews__input:checked ~ .reviews__star {
+    color: #d8b73d;
+}
+
+.alert {
+    margin-top: 0.75rem;
+    text-align: center;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.alert--hidden {
+    opacity: 0;
+    visibility: 0;
+}
+
+.alert__text {
+    color: #EF6F6F;
+}
 
 /* Footer styles */
 
