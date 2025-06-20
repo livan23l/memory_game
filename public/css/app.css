@@ -199,11 +199,11 @@
 /*--Modal styles--*/
 
 .modal[open] {
-    top: -25%;
+    top: 0;
     opacity: 1;
 
     @starting-style {
-        top: -60%;
+        top: -35%;
         opacity: 0;
     }
 }
@@ -224,10 +224,19 @@
     border-radius: 10px;
     background-color: var(--terciary);
     position: fixed;
-    top: -60%;
+    top: -35%;
     opacity: 0;
     transition: opacity 0.3s ease-in-out, top 0.3s ease-in-out, display 0.3s allow-discrete;
 }
+
+@supports (-webkit-touch-callout: none) {
+  .modal {
+    height: 40vh;
+    max-height: 15rem;
+    overflow: auto;
+  }
+}
+
 
 .modal::backdrop {
     background-color: transparent;
@@ -426,6 +435,18 @@
 
     .game__option {
         font-size: 1rem;
+    }
+
+    .modal[open] {
+        top: -25%;
+
+        @starting-style {
+            top: -60%;
+        }
+    }
+
+    .modal {
+        top: -60%;
     }
 
     .modal__title {

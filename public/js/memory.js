@@ -408,7 +408,7 @@ class Memory {
             this.#setGame(this.#createCards.bind(this));
         });
 
-        // Event when the user changes to hardcore mode
+        // Event when the user changes to hardcore / normal mode
         this.#$hardcoreOption.addEventListener('change', () => {
             this.#setGame(this.#createCards.bind(this));  // Reset the game
         });
@@ -418,7 +418,8 @@ class Memory {
             // Check that the game is not blocked
             switch (this.#gameBlocked) {
                 case this.#gameBlockedValues.partialLock:
-                    // Restart the game
+                    // Unlock and restart the game
+                    this.#gameBlocked = this.#gameBlockedValues.unlock;
                     this.#setGame(this.#createCards.bind(this));
                 case this.#gameBlockedValues.totalLock:
                     return;
