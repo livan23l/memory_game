@@ -343,13 +343,57 @@
     text-align: center;
 }
 
+.footer__tooltip {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 0.2rem;
+}
+
+.footer__info {
+    width: 1.2rem;
+    height: 1.2rem;
+    cursor: pointer;
+}
+
+.tooltip {
+    max-width: 20rem;
+    max-height: 70vh;
+    width: 80vw;
+    padding: 0.75rem 1rem;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: var(--secondary);
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    translate: -50% -25%;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1rem;
+    opacity: 0;
+    visibility: hidden;
+    overflow: auto;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.tooltip:hover {
+    opacity: 1;
+    visibility: visible;
+}
+
+.footer__info:hover + .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
 .footer__author {
     font-weight: bold;
     font-style: italic;
 }
 
 .footer__anchor {
-    color: var(--secondary);
+    color: var(--text);
 }
 
 /* Breakpoints */
