@@ -199,11 +199,11 @@
 /*--Modal styles--*/
 
 .modal[open] {
-    top: -25%;
+    top: 0;
     opacity: 1;
 
     @starting-style {
-        top: -60%;
+        top: -35%;
         opacity: 0;
     }
 }
@@ -224,10 +224,19 @@
     border-radius: 10px;
     background-color: var(--terciary);
     position: fixed;
-    top: -60%;
+    top: -35%;
     opacity: 0;
     transition: opacity 0.3s ease-in-out, top 0.3s ease-in-out, display 0.3s allow-discrete;
 }
+
+@supports (-webkit-touch-callout: none) {
+  .modal {
+    height: 40vh;
+    max-height: 15rem;
+    overflow: auto;
+  }
+}
+
 
 .modal::backdrop {
     background-color: transparent;
@@ -257,19 +266,77 @@
 }
 
 
-/*--Rate styles--*/
+/*--Reviews styles--*/
 
-.rate {
+.reviews {
     max-width: var(--max-width);
     width: 100%;
     margin-inline: auto;
     text-align: center;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 0.5rem;
 }
 
-.rate__title {
-    font-size: 1.2rem;
+.reviews__title {
+    font-size: 1.3rem;
 }
 
+.reviews__stars {
+    width: fit-content;
+    margin: 0.75rem auto 0;
+    padding: 0.5rem 0.75rem;
+    border-radius: 10px;
+    box-shadow: 5px 5px 0 #00000080;
+    background-color: var(--terciary);
+    display: flex;
+    flex-flow: row-reverse wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    user-select: none;
+}
+
+.reviews__current {
+    font-size: 1.1rem;
+}
+
+.reviews__value {
+    font-weight: bold;
+}
+
+.reviews__input {
+    display: none;
+}
+
+.reviews__star {
+    color: var(--text);
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.reviews__star:hover,
+.reviews__star:hover ~ .reviews__star {
+    color: #d8b73d;
+}
+
+.reviews__input:checked ~ .reviews__star {
+    color: #d8b73d;
+}
+
+.alert {
+    margin-top: 0.75rem;
+    text-align: center;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.alert--hidden {
+    opacity: 0;
+    visibility: 0;
+}
+
+.alert__text {
+    color: #EF6F6F;
+}
 
 /* Footer styles */
 
@@ -285,13 +352,57 @@
     text-align: center;
 }
 
+.footer__tooltip {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 0.2rem;
+}
+
+.footer__info {
+    width: 1.2rem;
+    height: 1.2rem;
+    cursor: pointer;
+}
+
+.tooltip {
+    max-width: 20rem;
+    max-height: 70vh;
+    width: 80vw;
+    padding: 0.75rem 1rem;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: var(--secondary);
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    translate: -50% -25%;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1rem;
+    opacity: 0;
+    visibility: hidden;
+    overflow: auto;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.tooltip:hover {
+    opacity: 1;
+    visibility: visible;
+}
+
+.footer__info:hover + .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
 .footer__author {
     font-weight: bold;
     font-style: italic;
 }
 
 .footer__anchor {
-    color: var(--secondary);
+    color: var(--text);
 }
 
 /* Breakpoints */
@@ -324,6 +435,18 @@
 
     .game__option {
         font-size: 1rem;
+    }
+
+    .modal[open] {
+        top: -25%;
+
+        @starting-style {
+            top: -60%;
+        }
+    }
+
+    .modal {
+        top: -60%;
     }
 
     .modal__title {
