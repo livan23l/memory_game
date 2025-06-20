@@ -187,6 +187,9 @@ class Memory {
         // Get all the game cards
         this.#$cards = this.#$gameCards.querySelectorAll('.game__card');
 
+        // Unlock the game
+        this.#gameBlocked = this.#gameBlockedValues.unlock;
+
         // Show all the cards if the hardcore mode is selected
         if (this.#$hardcoreOption.checked) this.#showAllCards();
     }
@@ -248,6 +251,9 @@ class Memory {
      * options and the modal will be displayed
      */
     #showLose() {
+        // Lock the game
+        this.#gameBlocked = this.#gameBlockedValues.totalLock;
+
         // Shows the rest of the cards and the modal after 400ms
         const modal = document.querySelector("#modal");
         setTimeout(() => {
@@ -418,8 +424,7 @@ class Memory {
             // Check that the game is not blocked
             switch (this.#gameBlocked) {
                 case this.#gameBlockedValues.partialLock:
-                    // Unlock and restart the game
-                    this.#gameBlocked = this.#gameBlockedValues.unlock;
+                    // Restart the game
                     this.#setGame(this.#createCards.bind(this));
                 case this.#gameBlockedValues.totalLock:
                     return;
